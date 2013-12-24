@@ -47,7 +47,7 @@ class Extension_Fingerprint extends Extension {
         } else {
             $xpath = new DOMXpath($doc);
             $fields = array();
-            foreach ($xpath->query('//form[@method="post"]//input[@type="hidden"]') as $input) {
+            foreach ($xpath->query('//form[@method="post"]//input[@type="hidden" and @data-source!="from-js"]') as $input) {
                 $fields[] = $input->getAttribute('name');
                 $values .= $input->getAttribute('value');
             }
